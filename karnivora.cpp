@@ -42,3 +42,5 @@ void Karnivora::gerak() {
 		}
 	}
 }
+
+//hallogan
