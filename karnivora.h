@@ -6,6 +6,7 @@
 class Karnivora : public Dinosaurus {
 	public:
 		void makan();
+		void gerak();
 };
 
 #endif
