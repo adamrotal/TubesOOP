@@ -1,5 +1,6 @@
 #include "herbivora.h"
 #include "board.h"
+#include <unistd.h>
 using namespace std;
 
 void Herbivora::makan() {
@@ -8,43 +9,66 @@ void Herbivora::makan() {
 }
 
 void Herbivora::gerak() {
-	switch(DFS(2)) {
+	int oldAbsis = this->getAbsis();
+	int oldOrdinat = this->getOrdinat();
+	switch(Dinosaurus::BFS(2)) {
 		case 0 : {
-			posisiX += 1;
-			posisiY += 0;
+			posisiY += 1;
+			posisiX += 0;
+			break;
 		}
 		case 1 : {
-			posisiX += 1;
-			posisiY -= 1;
+			posisiY += 1;
+			posisiX -= 1;
+			break;
 		}
 		case 2 : {
-			posisiX += 0;
-			posisiY -= 1;
+			posisiY += 0;
+			posisiX -= 1;
+			break;
 		}
 		case 3 : {
-			posisiX -= 1;
 			posisiY -= 1;
+			posisiX -= 1;
+			break;
 		}
 		case 4 : {
-			posisiX -= 1;
-			posisiY += 0;
+			posisiY -= 1;
+			posisiX += 0;
+			break;
 		}
 		case 5 : {
-			posisiX -= 1;
-			posisiY += 1;
+			posisiY -= 1;
+			posisiX += 1;
+			break;
 		}
 		case 6 : {
-			posisiX += 0;
-			posisiY += 1;
+			posisiY += 0;
+			posisiX += 1;
+			break;
 		}
 		case 7 : {
-			posisiX += 1;
 			posisiY += 1;
+			posisiX += 1;
+			break;
 		}
 	}
 
-	Board *b = Board::Instance();
-	b->MasukkanMakhluk(this);
+	Board* B;
+    B=Board::Instance();    
+    B->HapusMakhluk(this,oldAbsis,oldOrdinat);
 
 	
+}
+
+void Herbivora::hidup(){
+	Board* B;
+    B=Board::Instance();
+	while(exp>0){
+		gerak();
+		if(B->cekMakhluk(getAbsis(),getOrdinat())==0){
+			B->MasukkanMakhluk(this);
+		}
+		sleep(waktuGerak);
+	}
 }

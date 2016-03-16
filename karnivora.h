@@ -2,6 +2,7 @@
 #define KARNIVORA_H
 
 #include "dinosaurus.h"
+#include "board.h"
 
 class Karnivora : public Dinosaurus {
 	public:

@@ -1,4 +1,4 @@
-
+#include <thread>
 
 #ifndef MAKHLUK_H
 #define MAKHLUK_H
@@ -18,6 +18,7 @@ class Makhluk{
 		int getOrdinat();
 		int getKlasifikasi();
 		virtual void hidup()=0;
+		static int getJumlahMakhluk();
 	protected:
 		int umur;
 		int exp;

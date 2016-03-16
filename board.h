@@ -10,6 +10,7 @@ public:
     static Board* Instance();
     void TampilkanBoard();
     void MasukkanMakhluk(Makhluk* Mh);
+    void HapusMakhluk(Makhluk* Mh,int _absis,int _ordinat);
     int cekMakhluk(int _absis,int _ordinat);
 
 private:

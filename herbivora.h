@@ -7,6 +7,7 @@ class Herbivora : public Dinosaurus {
 	public:
 		void makan();
 		void gerak();
+		void hidup();
 	};
 
 #endif

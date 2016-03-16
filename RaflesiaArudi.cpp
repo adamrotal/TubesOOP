@@ -5,23 +5,24 @@
 using namespace std;
 
 //constructor
-RaflesiaArudi::RaflesiaArudi(int y, int x) {
+RaflesiaArudi::RaflesiaArudi(int x, int y) {
     umur = 0;
     exp = 100;
     posisiX = x;
     posisiY = y;
-    bentuk = 'R';
+    bentuk = '9';
+    waktu_regenerasi = 20;
 }
 //Method
 
-void RaflesiaArudi::regenerasi_shield() {
+/*void RaflesiaArudi::regenerasi_shield() {
     if (!shield) {
         sleep(10);   //recharge for 10s
         shield = true;  //reset shield
     } else {    //shield on
         //do nothing
     }
-}
+}*/
 
 void RaflesiaArudi::show_data () {
     cout << "Usia   : " << umur << endl;
@@ -30,3 +31,4 @@ void RaflesiaArudi::show_data () {
     cout << "Pos Y  : " << posisiY << endl;
     cout << "Shape  : " << bentuk << endl;
 }
+

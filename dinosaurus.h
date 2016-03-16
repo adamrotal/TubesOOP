@@ -7,12 +7,13 @@ class Dinosaurus : public Makhluk {
 	//Method
 	virtual void gerak()=0;
 	virtual void makan()=0;
+	virtual void hidup()=0;
 	
 	protected:
-	int DFS(int makanan);
+	int BFS(int makanan);
 	int waktuGerak;
-	int dx;
-	int dy;
+	//int dx;
+	//int dy;
 	
 };
 #endif

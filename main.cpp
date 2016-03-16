@@ -47,7 +47,7 @@ int getRandomOrdinate() {
 	return x;
 }
 
-Makhluk& createObject() {
+/*Makhluk& createObject() {
 	Makhluk* M;
 	int i;
 	i = rand()%10 +1;
@@ -101,22 +101,42 @@ void createThread() {
 	
 	
 	
-}
+}*/
 
 int main()
 {
 //    list<Makhluk> Creatures;
-	Makhluk* M = new RaflesiaArudi(getRandomAbsis(),getRandomOrdinate());
+	
+	Makhluk* M = new RaflesiaArudi(10,40);
+	Makhluk* M1 = new Stegosaurus(13,50);
+	Makhluk* M2 = new RaflesiaArudi(10,100);
 	//M = createObject();
 	Board* B;
+
     B=Board::Instance();
     B->MasukkanMakhluk(M);
+    B->MasukkanMakhluk(M1);
+    B->MasukkanMakhluk(M2);
 
-	while(1){
+    
+  
+
+    std::thread t1 (&Makhluk::hidup,M);
+    std::thread t2 (&Makhluk::hidup,M1);
+    std::thread t3 (&Makhluk::hidup,M2);
+    //std::thread t2(M1->hidup());
+
+
+	while(Makhluk::getJumlahMakhluk()>1){
         B->TampilkanBoard();
 	//	M = createObject();
-        sleep(1000);
+        sleep(1);
     }
+
+    t1.join();
+    t2.join();
+    t3.join();
+    
 }
 
 //mainhaha

@@ -32,5 +32,9 @@ int Makhluk::getKlasifikasi(){
 		return 1;
 	}
 }
+
+int Makhluk::getJumlahMakhluk(){
+	return jumlah;
+}
 int Makhluk::jumlah = 0;
 //Inisialisasi static data member dari kelas 

@@ -3,21 +3,25 @@
 #include <queue>
 #include <utility>
 #include <cstring>
+#include <ctime>
+#include <cstdlib>
 #include "board.h"
 using namespace std;
 typedef pair<int,int> ii;
+
+
 
 void Dinosaurus::makan() {
 	//Memakan Mahkluk lain
 	
 }
 
-int Dinosaurus::DFS(int makanan){
+int Dinosaurus::BFS(int makanan){
 	bool visit[37][151];
 	memset(visit,false,sizeof(visit));
 	bool keluar=false;
-	int final_absis;
-	int final_ordinat;
+	int final_absis=this->getAbsis();
+	int final_ordinat=this->getOrdinat();
 	int d_absis[]={1,0,-1,0};
 	int d_ordinat[]={0,-1,0,1};
 	int _absis=this->getAbsis();
@@ -28,21 +32,23 @@ int Dinosaurus::DFS(int makanan){
     B=Board::Instance();
 	q.push(ii(_absis,_ordinat));
 	ii u;
-	while(!q.empty()){
+
+	while(!q.empty()&&(!keluar)){
 		u=q.front();q.pop();
 		for (int k = 0; k < 4; ++k)
         {
-            int ny = u.first+dy[k], nx = u.second+dx[k];
-            if ((ny >= 0) && (ny < 37) && (nx >= 0) && (nx < 151) && (!visit[ny][nx]))
+            int ny = u.first+d_absis[k]; 
+            int nx = u.second+d_ordinat[k];
+            if ((ny >= 0) && (ny < 151) && (nx >= 0) && (nx < 37) && (!visit[nx][ny]))
             {
-                KlasifikasiMh=cekMakhluk(nx,ny);
+                KlasifikasiMh=B->cekMakhluk(ny,nx);
                 if (KlasifikasiMh==0)
                 {
                     q.push(ii(ny,nx));
-                    visit[ny][nx] = true;
+                    visit[nx][ny] = true;
                 }else if((makanan==3)||(KlasifikasiMh==makanan)){
-                	final_absis=nx;
-                	final_ordinat=ny;
+                	final_absis=ny;
+                	final_ordinat=nx;
                 	keluar=true;
                 	
                 }
@@ -71,9 +77,12 @@ int Dinosaurus::DFS(int makanan){
 		return 6;
 	}else if((_ordinat<final_ordinat)&&(_absis<final_absis)){
 		return 7;
+	}else{
+		srand (time(NULL));
+		return(rand() % 8);
 	}
 
-
+	
 }
 
 

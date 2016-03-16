@@ -7,7 +7,7 @@ class Stegosaurus : public Herbivora {
 	public:
 		Stegosaurus(int,int);
 		//Method
-		void gerak();
+		//void gerak();
 		
 };
 

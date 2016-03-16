@@ -7,7 +7,9 @@ void Karnivora::makan() {
 }
 
 void Karnivora::gerak() {
-	switch(DFS(1)) {
+	int oldAbsis = this->getAbsis();
+	int oldOrdinat = this->getOrdinat();
+	switch(Dinosaurus::BFS(1)) {
 		case 0 : {
 			posisiX += 1;
 			posisiY += 0;
@@ -41,6 +43,12 @@ void Karnivora::gerak() {
 			posisiY += 1;
 		}
 	}
+
+	Board* B;
+    B=Board::Instance();
+    B->MasukkanMakhluk(this);
+    B->HapusMakhluk(this,oldAbsis,oldOrdinat);
+
 }
 
 //hallogan

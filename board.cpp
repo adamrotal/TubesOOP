@@ -40,7 +40,16 @@ void Board::MasukkanMakhluk(Makhluk* Mh){
     kotak[ordinat][absis]=Mh;
 }
 
-int Board::int cekMakhluk(int _absis,int _ordinat){
+void Board::HapusMakhluk(Makhluk* Mh,int _absis,int _ordinat){
+    if(kotak[_ordinat][_absis]==Mh){
+        kotak[_ordinat][_absis]=NULL;
+    }
+}
+
+int Board::cekMakhluk(int _absis,int _ordinat){
+    //1 Dinosaurus
+    //2 Tumbuhan
+    //0 Tidak ada
     if(kotak[_ordinat][_absis]==NULL){
         return 0;
     }else{

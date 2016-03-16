@@ -9,9 +9,8 @@ class RaflesiaArudi : public Herbs {
 	public:
         //4 sekawan
 		RaflesiaArudi(int x, int y);
-
 		//Method
-        void regenerasi_shield();
+        //void regenerasi_shield();
 		void show_data ();
 };
 
