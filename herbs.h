@@ -8,12 +8,14 @@ class Herbs : public tumbuhan {
 	//The 3rd level of abstract class
 	public:
 		//Method
-		/*virtual*/ void regenerasi_shield();
+		/*virtual*/ 
+		void regenerasi_shield();
 		void hidup();
 
 
 	protected:
 		bool shield;
+		char bentukAsli;
 		int waktu_regenerasi;
 };
 

@@ -5,12 +5,7 @@
 class Gigantosaurus : public Karnivora {
 	public:
 		//Constructor
-		Gigantosaurus(int X, int Y);
-		//Method
-		void gerak();
-		void muncul();
-		
-
+		Gigantosaurus(int x, int y);
 
 };
 #endif

@@ -6,6 +6,7 @@ class Omnivora : public Dinosaurus {
 		public:
 		void makan();
 		void gerak();
+		void hidup();
 		
 };
 #endif

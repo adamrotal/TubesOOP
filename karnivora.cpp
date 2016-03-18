@@ -1,4 +1,6 @@
 #include "karnivora.h"
+#include "board.h"
+#include <unistd.h>
 using namespace std;
 
 void Karnivora::makan() {
@@ -7,48 +9,71 @@ void Karnivora::makan() {
 }
 
 void Karnivora::gerak() {
-	int oldAbsis = this->getAbsis();
-	int oldOrdinat = this->getOrdinat();
+	//int oldAbsis = this->getAbsis();
+	//int oldOrdinat = this->getOrdinat();
 	switch(Dinosaurus::BFS(1)) {
 		case 0 : {
-			posisiX += 1;
-			posisiY += 0;
+			posisiY += 1;
+			posisiX += 0;
+			break;
 		}
 		case 1 : {
-			posisiX += 1;
-			posisiY -= 1;
+			posisiY += 1;
+			posisiX -= 1;
+			break;
 		}
 		case 2 : {
-			posisiX += 0;
-			posisiY -= 1;
+			posisiY += 0;
+			posisiX -= 1;
+			break;
 		}
 		case 3 : {
-			posisiX -= 1;
 			posisiY -= 1;
+			posisiX -= 1;
+			break;
 		}
 		case 4 : {
-			posisiX -= 1;
-			posisiY += 0;
+			posisiY -= 1;
+			posisiX += 0;
+			break;
 		}
 		case 5 : {
-			posisiX -= 1;
-			posisiY += 1;
+			posisiY -= 1;
+			posisiX += 1;
+			break;
 		}
 		case 6 : {
-			posisiX += 0;
-			posisiY += 1;
+			posisiY += 0;
+			posisiX += 1;
+			break;
 		}
 		case 7 : {
-			posisiX += 1;
 			posisiY += 1;
+			posisiX += 1;
+			break;
 		}
 	}
 
-	Board* B;
+	/*Board* B;
     B=Board::Instance();
     B->MasukkanMakhluk(this);
     B->HapusMakhluk(this,oldAbsis,oldOrdinat);
+    */
 
 }
-
-//hallogan
+void Karnivora::hidup(){
+	int oldAbsis;
+	int oldOrdinat;
+	Board* B;
+    B=Board::Instance();
+	while(exp>0){
+		oldAbsis = this->getAbsis();
+		oldOrdinat = this->getOrdinat();
+		gerak();
+		if(B->cekMakhluk(getAbsis(),getOrdinat())==0){
+			B->MasukkanMakhluk(this);
+			B->HapusMakhluk(this,oldAbsis,oldOrdinat);
+		}
+		sleep(waktuGerak);
+	}
+}

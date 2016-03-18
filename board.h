@@ -12,10 +12,13 @@ public:
     void MasukkanMakhluk(Makhluk* Mh);
     void HapusMakhluk(Makhluk* Mh,int _absis,int _ordinat);
     int cekMakhluk(int _absis,int _ordinat);
+    bool isPosisiOk(int _absis, int _ordinat);
+    void copyBoard();
 
 private:
     Board();
     Makhluk* kotak[37][151];
+    Makhluk* kotak1[37][151];
     static Board* Addr;
 };
 

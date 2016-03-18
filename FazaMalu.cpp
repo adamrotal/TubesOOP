@@ -10,23 +10,6 @@ FazaMalu::FazaMalu(int x, int y) {
     exp = 100;
     posisiX = x;
     posisiY = y;
-    bentuk = 'Z';
+    bentukAsli = '4';
+    waktu_regenerasi = 10;
 }
-
-//Method
-void FazaMalu::regenerasi_shield() {
-    if (!shield) {
-        sleep(10);   //recharge for 10s
-        shield = true;  //reset shield
-    } else {    //shield on
-        //do nothing
-    }
-}
-/*
-void FazaMalu::show_data () {
-    cout << "Usia   : " << umur << endl;
-    cout << "Exp    : " << exp << endl;
-    cout << "Pos X  : " << posisiX << endl;
-    cout << "Pos Y  : " << posisiY << endl;
-    cout << "Shape  : " << bentuk << endl;
-}*/

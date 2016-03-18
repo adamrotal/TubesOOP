@@ -10,7 +10,7 @@ RaflesiaArudi::RaflesiaArudi(int x, int y) {
     exp = 100;
     posisiX = x;
     posisiY = y;
-    bentuk = '9';
+    bentukAsli = '1';
     waktu_regenerasi = 20;
 }
 //Method
@@ -23,12 +23,3 @@ RaflesiaArudi::RaflesiaArudi(int x, int y) {
         //do nothing
     }
 }*/
-
-void RaflesiaArudi::show_data () {
-    cout << "Usia   : " << umur << endl;
-    cout << "Exp    : " << exp << endl;
-    cout << "Pos X  : " << posisiX << endl;
-    cout << "Pos Y  : " << posisiY << endl;
-    cout << "Shape  : " << bentuk << endl;
-}
-

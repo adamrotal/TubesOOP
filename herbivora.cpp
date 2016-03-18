@@ -9,8 +9,8 @@ void Herbivora::makan() {
 }
 
 void Herbivora::gerak() {
-	int oldAbsis = this->getAbsis();
-	int oldOrdinat = this->getOrdinat();
+	//int oldAbsis = this->getAbsis();
+	//int oldOrdinat = this->getOrdinat();
 	switch(Dinosaurus::BFS(2)) {
 		case 0 : {
 			posisiY += 1;
@@ -54,20 +54,25 @@ void Herbivora::gerak() {
 		}
 	}
 
-	Board* B;
+	/*Board* B;
     B=Board::Instance();    
     B->HapusMakhluk(this,oldAbsis,oldOrdinat);
-
+	*/
 	
 }
 
 void Herbivora::hidup(){
+	int oldAbsis;
+	int oldOrdinat;
 	Board* B;
     B=Board::Instance();
 	while(exp>0){
+		oldAbsis = this->getAbsis();
+		oldOrdinat = this->getOrdinat();
 		gerak();
 		if(B->cekMakhluk(getAbsis(),getOrdinat())==0){
 			B->MasukkanMakhluk(this);
+			B->HapusMakhluk(this,oldAbsis,oldOrdinat);
 		}
 		sleep(waktuGerak);
 	}

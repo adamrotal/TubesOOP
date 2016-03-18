@@ -11,10 +11,13 @@ void Herbs::regenerasi_shield() {
 	/*
     shield = true;
     cout << "regenerasi sukses" << endl;*/
+    bentuk='0';
     while(exp>0){
     	if(!shield){
+    		bentuk=bentukAsli;
     		sleep(waktu_regenerasi);
     		shield=true;
+    		bentuk='0';
     	}
     }
 }

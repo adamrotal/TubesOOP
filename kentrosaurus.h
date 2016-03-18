@@ -5,12 +5,6 @@
 class Kentrosaurus : public Omnivora {
 	public:
 		//Constructor
-		Kentrosaurus(int X, int Y);
-		//Method
-		void gerak();
-		void muncul();
-		
-
-
+		Kentrosaurus(int x, int y);
 };
 #endif

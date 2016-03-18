@@ -6,8 +6,6 @@
 class Brontosaurus : public Herbivora {
 	public:
 		Brontosaurus(int,int);
-		//Method
-		void gerak();
 		
 };
 

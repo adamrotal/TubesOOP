@@ -4,20 +4,12 @@
 using namespace std;
 
 
-Brontosaurus::Brontosaurus(int a, int b) {
-	posisiX = a;
-	posisiY = b;
+Brontosaurus::Brontosaurus(int x, int y) {
+	posisiX = x;
+	posisiY = y;
 	
 	umur = 0;
-	exp = 400;
+	exp = 700;
 	bentuk = 'B';
-	waktuGerak = 6;
-	dx = 1;
-	dy = -1;
-	cout<<"ROAR! I've appeared on "<<"("<<a<<","<<b<<")"<<endl;
-}
-
-void Brontosaurus::gerak() {
-	posisiX += dx;
-	posisiY += dy;
+	waktuGerak = 3;
 }

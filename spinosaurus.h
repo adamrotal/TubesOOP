@@ -6,11 +6,7 @@
 class Spinosaurus : public Karnivora{
 	public:
 		//ctor
-		Spinosaurus(int a,int b);
-		
-		//implementasi
-		void gerak();
-	
+		Spinosaurus(int x,int y);	
 };
 
 #endif

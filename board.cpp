@@ -1,7 +1,11 @@
 #include "board.h"
 #include <iostream>
+#include <mutex>
+#include <unistd.h>
 
 using namespace std;
+
+mutex m;
 
 Board* Board::Addr=NULL;
 
@@ -50,10 +54,30 @@ int Board::cekMakhluk(int _absis,int _ordinat){
     //1 Dinosaurus
     //2 Tumbuhan
     //0 Tidak ada
-    if(kotak[_ordinat][_absis]==NULL){
+
+    if(kotak1[_ordinat][_absis]==NULL){
         return 0;
     }else{
-        return kotak[_ordinat][_absis]->getKlasifikasi();    
+        return kotak1[_ordinat][_absis]->getKlasifikasi();    
     }
     
+}
+
+bool Board::isPosisiOk(int _absis, int _ordinat) {
+    if (_absis >= 37 || _ordinat >= 151) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+void Board::copyBoard(){
+    while(1){
+        m.lock();
+        for(int i=0;i<37;i++)
+            for(int j=0;j<151;j++)
+                kotak1[i][j]=kotak[i][j];
+        m.unlock();
+        sleep(1);            
+    }
 }

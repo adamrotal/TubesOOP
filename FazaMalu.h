@@ -11,8 +11,6 @@ class FazaMalu : public Herbs {
 		FazaMalu(int x, int y);
 
 		//Method
-       virtual void regenerasi_shield();
-		//void show_data ();
 };
 
 #endif

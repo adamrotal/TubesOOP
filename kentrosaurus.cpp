@@ -2,24 +2,13 @@
 #include <iostream>
 using namespace std;
 
-Kentrosaurus::Kentrosaurus(int X, int Y) {
-	posisiX = X;
-	posisiY = Y;
+Kentrosaurus::Kentrosaurus(int x, int y) {
+	posisiX = x;
+	posisiY = y;
+	
 	umur = 0;
-	exp = 500;
-	bentuk = '&';
+	exp = 700;
+	bentuk = 'K';
 	waktuGerak = 4;
-	dx = 2;
-	dy = 0;
 	
-}
-
-void Kentrosaurus::gerak() {
-	posisiX = dx + posisiX;
-	posisiY = dx + posisiY;
-	
-}
-
-void Kentrosaurus::muncul() {
-	cout<<"<"<<posisiX<<","<<posisiY<<">"<<endl;
 }
