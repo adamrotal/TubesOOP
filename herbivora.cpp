@@ -1,10 +1,60 @@
 #include "herbivora.h"
 #include "board.h"
+#include "makhluk.h"
+#include "herbs.h"
 #include <unistd.h>
 using namespace std;
 
 void Herbivora::makan() {
-	//if satu kotak dengan tumbuhan lain, maka Omnivora akan memakan tumbuhan tersebut
+	Board* B;
+    B=Board::Instance();
+	switch (B->cekMakhluk(this->getAbsis(), this->getOrdinat())) {
+		case 0 : {
+			//donothing
+		}
+		case 1 : {
+			switch (B->cekBentuk(this->getAbsis(), this->getOrdinat())) {
+				case 'G' : {
+					this->exp = 0;		
+				}
+				case 'N' : {
+					this->exp = 0;		
+				}
+				case 'S' : {
+					B->battle(this->getAbsis(), this->getOrdinat(), this);
+				}
+				case 'B' : {
+					B->battle(this->getAbsis(), this->getOrdinat(), this);			
+				}
+				case 'K' : {
+					this->exp = 0;		
+				}
+				case 'P' : {
+					this->exp = 0;		
+				}
+			}
+		}
+		case 2 : {
+			switch (B->cekBentuk(this->getAbsis(), this->getOrdinat())) {
+				case '0' : {
+					this->exp = 0;
+					Makhluk* M = B->getMakhluk(this->getAbsis(), this->getOrdinat());
+					M->hapusShield();
+				} 
+				case '1' : {
+					Makhluk* M = B->getMakhluk(this->getAbsis(), this->getOrdinat());
+					M->killMakhluk();
+				} 
+				case '4' : {
+					Makhluk* M = B->getMakhluk(this->getAbsis(), this->getOrdinat());
+					M->killMakhluk();
+				}
+				default : {
+					this->exp = 0;
+				}
+			}
+		}
+	}
 	
 }
 

@@ -4,9 +4,17 @@
 using namespace std;
 
 void Karnivora::makan() {
-	//if satu kotak dengan hewan lain, maka hewan ini akan menang
-	//sdknksdnkn
-}
+	switch (Board::cekMakhluk(this->getAbsis(), this->getOrdinat())) {
+		case 0 : {
+			//donothing
+		}
+		case 1 : {
+			
+		}
+		case 2 : {
+			
+		}
+	}
 
 void Karnivora::gerak() {
 	//int oldAbsis = this->getAbsis();

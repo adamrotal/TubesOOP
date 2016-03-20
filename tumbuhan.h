@@ -11,6 +11,7 @@ class tumbuhan : public Makhluk
         //constructor
 		tumbuhan();
 		virtual void hidup()=0;
+		virtual void hapusShield();
 		//Method
 };
 

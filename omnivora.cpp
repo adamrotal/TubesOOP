@@ -4,7 +4,36 @@
 using namespace std;
 
 void Omnivora::makan() {
-	//if satu kotak dengan hewan lain, maka hewan ini akan menang jika expnya lebih besa
+	switch (Board::cekMakhluk(this->getAbsis(), this->getOrdinat())) {
+		case 0 : {
+			//donothing
+		}
+		case 1 : {
+			switch (Board::cekBentuk(this->getAbsis(), this->getOrdinat())) {
+				case 'G' : {
+					Board::battle(this->getAbsis(), this->getOrdinat(), this);		
+				}
+				case 'N' : {
+					Board::battle(this->getAbsis(), this->getOrdinat(), this);		
+				}
+				case 'S' : {
+					//do nothing
+				}
+				case 'B' : {
+					//do nothing			
+				}
+				case 'K' : {
+					Board::battle(this->getAbsis(), this->getOrdinat(), this);		
+				}
+				case 'P' : {
+					Board::battle(this->getAbsis(), this->getOrdinat(), this);		
+				}
+			}
+		}
+		case 2 : {
+			
+		}
+	}
 	
 }
 

@@ -36,5 +36,17 @@ int Makhluk::getKlasifikasi(){
 int Makhluk::getJumlahMakhluk(){
 	return jumlah;
 }
+
+void Makhluk::killMakhluk() {
+	exp = 0;
+}
+void Makhluk::hapusShield() {
+
+}
+
+char Makhluk::getBentuk() {
+	return bentuk;
+}
+
 int Makhluk::jumlah = 0;
 //Inisialisasi static data member dari kelas 

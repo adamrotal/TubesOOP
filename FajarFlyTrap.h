@@ -9,10 +9,6 @@ class FajarFlyTrap : public predator {
 	public:
         //4 sekawan
 		FajarFlyTrap(int x, int y);
-
-		//Method
-        virtual void makan();
-		void show_data ();
 };
 
 #endif

@@ -17,6 +17,9 @@ class Makhluk{
 		int getAbsis();
 		int getOrdinat();
 		int getKlasifikasi();
+		char getBentuk();
+		void killMakhluk();
+		virtual void hapusShield();
 		virtual void hidup()=0;
 		static int getJumlahMakhluk();
 	protected:

@@ -108,12 +108,12 @@ int main()
 //    list<Makhluk> Creatures;
 	
 	//Makhluk* M = new RaflesiaArudi(10,40);
-	//Makhluk* M1 = new Stegosaurus(13,50);
-	//Makhluk* M2 = new RaflesiaArudi(10,100);
+	Makhluk* M1 = new Stegosaurus(13,100);
+	Makhluk* M2 = new RaflesiaArudi(10,100);
 	//Makhluk* M3 = new FazaMalu(15,50);
 	//Makhluk* M4 = new Spinosaurus(14,1);
-	Makhluk* M5 = new Brontosaurus(15,31);
-	Makhluk* M6 = new Kentrosaurus(16,75);
+	///Makhluk* M5 = new Brontosaurus(15,31);
+	//Makhluk* M6 = new Kentrosaurus(16,75);
 	//Makhluk* M7 = new Pteranodon(17,94);
 	//Makhluk* M8 = new Gigantosaurus(14,80);
 	
@@ -123,12 +123,12 @@ int main()
 
     B=Board::Instance();
     //B->MasukkanMakhluk(M);
-    //B->MasukkanMakhluk(M1);
-    //B->MasukkanMakhluk(M2);
+    B->MasukkanMakhluk(M1);
+    B->MasukkanMakhluk(M2);
 	//B->MasukkanMakhluk(M3);
 	//B->MasukkanMakhluk(M4);
-	B->MasukkanMakhluk(M5);
-	B->MasukkanMakhluk(M6);
+	//B->MasukkanMakhluk(M5);
+	//B->MasukkanMakhluk(M6);
 	//B->MasukkanMakhluk(M7);
 	//B->MasukkanMakhluk(M8);
 
@@ -136,12 +136,12 @@ int main()
   
 
     //thread t1 (&Makhluk::hidup,M);
-    //thread t2 (&Makhluk::hidup,M1);
-    //thread t3 (&Makhluk::hidup,M2);
+    thread t2 (&Makhluk::hidup,M1);
+    thread t3 (&Makhluk::hidup,M2);
     //thread t4 (&Makhluk::hidup,M3);
     //thread t5 (&Makhluk::hidup,M4);
-    thread t6 (&Makhluk::hidup,M5);
-    thread t7 (&Makhluk::hidup,M6);
+    //thread t6 (&Makhluk::hidup,M5);
+    //thread t7 (&Makhluk::hidup,M6);
     //thread t8 (&Makhluk::hidup,M7);
     //thread t9 (&Makhluk::hidup,M8);
     
@@ -158,12 +158,12 @@ int main()
     }
 
     //t1.join();
-    //t2.join();
-    //t3.join();
+    t2.join();
+    t3.join();
     //t4.join();
     //t5.join();
-    t6.join();
-    t7.join();
+    //t6.join();
+    //t7.join();
     //t8.join();
     //t9.join();
 }

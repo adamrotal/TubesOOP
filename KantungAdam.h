@@ -9,10 +9,6 @@ class KantungAdam : public predator {
 	public:
         //4 sekawan
 		KantungAdam(int x, int y);
-
-		//Method
-        virtual void makan();
-		void show_data ();
 };
 
 #endif

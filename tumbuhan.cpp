@@ -8,3 +8,7 @@ using namespace std;
 tumbuhan::tumbuhan(){
     //cout << "tumbuhan created" << endl;
 }
+void tumbuhan::hapusShield() {
+	
+}
+

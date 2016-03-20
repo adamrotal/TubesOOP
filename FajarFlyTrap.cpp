@@ -9,18 +9,6 @@ FajarFlyTrap::FajarFlyTrap(int x, int y) {
     exp = 100;
     posisiX = x;
     posisiY = y;
-    bentuk = 'F';
+    bentuk = '8';
 }
 
-//Method
-void FajarFlyTrap::makan() {
-    cout << "Implementasi makan kelas ini sudah diimplementasikan di kelas predator" << endl;
-}
-
-void FajarFlyTrap::show_data () {
-    cout << "Usia   : " << umur << endl;
-    cout << "Exp    : " << exp << endl;
-    cout << "Pos X  : " << posisiX << endl;
-    cout << "Pos Y  : " << posisiY << endl;
-    cout << "Shape  : " << bentuk << endl;
-}

@@ -63,14 +63,6 @@ int Board::cekMakhluk(int _absis,int _ordinat){
     
 }
 
-bool Board::isPosisiOk(int _absis, int _ordinat) {
-    if (_absis >= 37 || _ordinat >= 151) {
-        return false;
-    } else {
-        return true;
-    }
-}
-
 void Board::copyBoard(){
     while(1){
         m.lock();
@@ -80,4 +72,20 @@ void Board::copyBoard(){
         m.unlock();
         sleep(1);            
     }
+}
+
+char Board::cekBentuk (int _absis, int _ordinat) {
+    return kotak[_ordinat][_absis]->getBentuk();
+}
+
+void Board::battle (int _absis,int _ordinat, Makhluk* moveableMakhluk) {
+
+}
+/*
+Herbs* Board::getHerbs(int _absis,int _ordinat) {
+    return kotak[_ordinat][_absis];
+}
+*/
+Makhluk* Board::getMakhluk(int _absis,int _ordinat) {
+    return kotak[_ordinat][_absis];
 }

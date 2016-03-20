@@ -11,7 +11,9 @@ class Herbs : public tumbuhan {
 		/*virtual*/ 
 		void regenerasi_shield();
 		void hidup();
+		void hapusShield();
 
+		friend class Makhluk;
 
 	protected:
 		bool shield;

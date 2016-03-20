@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "makhluk.h"
+#include "herbs.h"
 
 class Board
 {
@@ -12,8 +13,12 @@ public:
     void MasukkanMakhluk(Makhluk* Mh);
     void HapusMakhluk(Makhluk* Mh,int _absis,int _ordinat);
     int cekMakhluk(int _absis,int _ordinat);
-    bool isPosisiOk(int _absis, int _ordinat);
+    char cekBentuk (int _absis, int _ordinat);
+    void battle (int _absis,int _ordinat, Makhluk* moveableMakhluk);
+    //Herbs* getHerbs(int _absis,int _ordinat);
+    Makhluk* getMakhluk(int _absis,int _ordinat);
     void copyBoard();
+
 
 private:
     Board();

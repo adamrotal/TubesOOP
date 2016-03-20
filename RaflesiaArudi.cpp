@@ -13,13 +13,3 @@ RaflesiaArudi::RaflesiaArudi(int x, int y) {
     bentukAsli = '1';
     waktu_regenerasi = 20;
 }
-//Method
-
-/*void RaflesiaArudi::regenerasi_shield() {
-    if (!shield) {
-        sleep(10);   //recharge for 10s
-        shield = true;  //reset shield
-    } else {    //shield on
-        //do nothing
-    }
-}*/

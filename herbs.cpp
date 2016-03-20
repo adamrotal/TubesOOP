@@ -1,5 +1,6 @@
 //implementasi
 #include "herbs.h"
+#include "board.h"
 #include <iostream>
 #include <unistd.h>
 #include <thread>
@@ -22,6 +23,10 @@ void Herbs::regenerasi_shield() {
     }
 }
 
+void Herbs::hapusShield() {
+    shield = false;
+}
+
 void Herbs::hidup(){
 	std::thread t(&Herbs::regenerasi_shield,this);
     shield=true;
@@ -31,4 +36,6 @@ void Herbs::hidup(){
     }
 
     t.join();
+    delete [] this;
+
 }
