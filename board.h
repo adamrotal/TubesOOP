@@ -17,13 +17,12 @@ public:
     void battle (int _absis,int _ordinat, Makhluk* moveableMakhluk);
     //Herbs* getHerbs(int _absis,int _ordinat);
     Makhluk* getMakhluk(int _absis,int _ordinat);
-    void copyBoard();
-
+   	void HapusMakhlukForce(Makhluk* Mh);
 
 private:
     Board();
     Makhluk* kotak[37][151];
-    Makhluk* kotak1[37][151];
+    
     static Board* Addr;
 };
 

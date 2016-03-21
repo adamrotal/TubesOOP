@@ -11,5 +11,5 @@ RaflesiaArudi::RaflesiaArudi(int x, int y) {
     posisiX = x;
     posisiY = y;
     bentukAsli = '1';
-    waktu_regenerasi = 20;
+    waktu_regenerasi = 10;
 }

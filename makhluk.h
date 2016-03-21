@@ -16,6 +16,7 @@ class Makhluk{
 		void muncul();
 		int getAbsis();
 		int getOrdinat();
+		int getExp();
 		int getKlasifikasi();
 		char getBentuk();
 		void killMakhluk();

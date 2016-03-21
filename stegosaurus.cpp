@@ -1,5 +1,8 @@
 #include "stegosaurus.h"
+#include "board.h"
 #include <iostream>
+#include <unistd.h>
+#include <thread>
 using namespace std;
 
 
@@ -14,6 +17,9 @@ Stegosaurus::Stegosaurus(int x, int y) {
 	//dx = 2;
 	//dy = -1;
 }
+
+
+
 	
 /*void Stegosaurus::gerak() {
 	posisiX += dx;

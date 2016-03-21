@@ -55,24 +55,14 @@ int Board::cekMakhluk(int _absis,int _ordinat){
     //2 Tumbuhan
     //0 Tidak ada
 
-    if(kotak1[_ordinat][_absis]==NULL){
+    if(kotak[_ordinat][_absis]==NULL){
         return 0;
     }else{
-        return kotak1[_ordinat][_absis]->getKlasifikasi();    
+        return kotak[_ordinat][_absis]->getKlasifikasi();    
     }
     
 }
 
-void Board::copyBoard(){
-    while(1){
-        m.lock();
-        for(int i=0;i<37;i++)
-            for(int j=0;j<151;j++)
-                kotak1[i][j]=kotak[i][j];
-        m.unlock();
-        sleep(1);            
-    }
-}
 
 char Board::cekBentuk (int _absis, int _ordinat) {
     return kotak[_ordinat][_absis]->getBentuk();
@@ -88,4 +78,13 @@ Herbs* Board::getHerbs(int _absis,int _ordinat) {
 */
 Makhluk* Board::getMakhluk(int _absis,int _ordinat) {
     return kotak[_ordinat][_absis];
+}
+
+void Board::HapusMakhlukForce(Makhluk* Mh){
+    m.lock();
+    for(int i=0;i<37;i++)
+        for(int j=0;j<151;j++)
+            if(kotak[i][j]==Mh)
+                kotak[i][j]=NULL;
+    m.unlock();
 }

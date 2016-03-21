@@ -103,13 +103,49 @@ void createThread() {
 	
 }*/
 
+void cekMakhlukHidup(Makhluk* M[],int banyakMakhluk){
+	Board* B;
+	B=Board::Instance();
+	bool *hidup = new bool[banyakMakhluk];
+	//inisialisasi
+	for(int i=0;i<banyakMakhluk;i++){
+		hidup[i]=true;
+	}
+
+	while(Makhluk::getJumlahMakhluk()>1){
+		for(int i=0;i<banyakMakhluk;i++){
+			if(hidup[i]==true){
+				if(M[i]->getExp()<=0){
+					sleep(2);
+					B->HapusMakhlukForce(M[i]);
+					delete M[i];
+					hidup[i]=false;
+				}
+			}
+		}
+	}
+
+	sleep(1);
+	for(int i=0;i<banyakMakhluk;i++){
+		if(hidup[i]==true){
+			M[i]->killMakhluk();
+		}
+	}
+
+	delete[] hidup; 
+	//cout<<menang<<endl;
+
+	
+}
+
 int main()
 {
-//    list<Makhluk> Creatures;
 	
+//    list<Makhluk> Creatures;
+	Makhluk* M[3];
 	//Makhluk* M = new RaflesiaArudi(10,40);
-	Makhluk* M1 = new Stegosaurus(13,100);
-	Makhluk* M2 = new RaflesiaArudi(10,100);
+	//Makhluk* M1 = new Stegosaurus(13,100);
+	//Makhluk* M2 = new RaflesiaArudi(10,100);
 	//Makhluk* M3 = new FazaMalu(15,50);
 	//Makhluk* M4 = new Spinosaurus(14,1);
 	///Makhluk* M5 = new Brontosaurus(15,31);
@@ -117,15 +153,16 @@ int main()
 	//Makhluk* M7 = new Pteranodon(17,94);
 	//Makhluk* M8 = new Gigantosaurus(14,80);
 	
-
+	M[0]=new Stegosaurus(13,100);
+	M[1]=new RaflesiaArudi(10,100);
+	M[2]=new Stegosaurus(17,100);
 	//M = createObject();
 	Board* B;
-
     B=Board::Instance();
     //B->MasukkanMakhluk(M);
-    B->MasukkanMakhluk(M1);
-    B->MasukkanMakhluk(M2);
-	//B->MasukkanMakhluk(M3);
+    B->MasukkanMakhluk(M[0]);
+    B->MasukkanMakhluk(M[1]);
+	B->MasukkanMakhluk(M[2]);
 	//B->MasukkanMakhluk(M4);
 	//B->MasukkanMakhluk(M5);
 	//B->MasukkanMakhluk(M6);
@@ -136,9 +173,10 @@ int main()
   
 
     //thread t1 (&Makhluk::hidup,M);
-    thread t2 (&Makhluk::hidup,M1);
-    thread t3 (&Makhluk::hidup,M2);
-    //thread t4 (&Makhluk::hidup,M3);
+    thread t (&cekMakhlukHidup,M,3);
+    thread t2 (&Makhluk::hidup,M[0]);
+    thread t3 (&Makhluk::hidup,M[1]);
+    thread t4 (&Makhluk::hidup,M[2]);
     //thread t5 (&Makhluk::hidup,M4);
     //thread t6 (&Makhluk::hidup,M5);
     //thread t7 (&Makhluk::hidup,M6);
@@ -147,20 +185,24 @@ int main()
     
     //std::thread t2(M1->hidup());
     cout<<endl;
-    thread tCopyBoard (&Board::copyBoard,B);
-    
 
 
 	while(Makhluk::getJumlahMakhluk()>1){
         B->TampilkanBoard();
+        cout<<Makhluk::getJumlahMakhluk();
 	//	M = createObject();
         sleep(1);
     }
 
+    
+    B->TampilkanBoard();
     //t1.join();
+    t.join();
+    cout<<"keluar";
+    //cout<<menang<<endl;
     t2.join();
     t3.join();
-    //t4.join();
+    t4.join();
     //t5.join();
     //t6.join();
     //t7.join();

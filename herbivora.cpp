@@ -10,29 +10,37 @@ void Herbivora::makan() {
     B=Board::Instance();
 	switch (B->cekMakhluk(this->getAbsis(), this->getOrdinat())) {
 		case 0 : {
+			break;
 			//donothing
 		}
 		case 1 : {
 			switch (B->cekBentuk(this->getAbsis(), this->getOrdinat())) {
 				case 'G' : {
-					this->exp = 0;		
+					this->exp = 0;
+					break;		
 				}
 				case 'N' : {
 					this->exp = 0;		
+					break;
 				}
 				case 'S' : {
 					B->battle(this->getAbsis(), this->getOrdinat(), this);
+					break;
 				}
 				case 'B' : {
-					B->battle(this->getAbsis(), this->getOrdinat(), this);			
+					B->battle(this->getAbsis(), this->getOrdinat(), this);	
+					break;		
 				}
 				case 'K' : {
-					this->exp = 0;		
+					this->exp = 0;
+					break;		
 				}
 				case 'P' : {
-					this->exp = 0;		
+					this->exp = 0;
+					break;		
 				}
 			}
+			break;
 		}
 		case 2 : {
 			switch (B->cekBentuk(this->getAbsis(), this->getOrdinat())) {
@@ -40,20 +48,27 @@ void Herbivora::makan() {
 					this->exp = 0;
 					Makhluk* M = B->getMakhluk(this->getAbsis(), this->getOrdinat());
 					M->hapusShield();
+					break;
 				} 
 				case '1' : {
 					Makhluk* M = B->getMakhluk(this->getAbsis(), this->getOrdinat());
 					M->killMakhluk();
+					B->MasukkanMakhluk(this);
+					break;
 				} 
 				case '4' : {
 					Makhluk* M = B->getMakhluk(this->getAbsis(), this->getOrdinat());
 					M->killMakhluk();
+					B->MasukkanMakhluk(this);
+					break;
 				}
 				default : {
 					this->exp = 0;
+					break;
 				}
 			}
 		}
+		break;
 	}
 	
 }
@@ -119,11 +134,15 @@ void Herbivora::hidup(){
 	while(exp>0){
 		oldAbsis = this->getAbsis();
 		oldOrdinat = this->getOrdinat();
-		gerak();
+		gerak();		
+		B->HapusMakhluk(this,oldAbsis,oldOrdinat);
 		if(B->cekMakhluk(getAbsis(),getOrdinat())==0){
-			B->MasukkanMakhluk(this);
-			B->HapusMakhluk(this,oldAbsis,oldOrdinat);
+			B->MasukkanMakhluk(this);			
+		}else{
+			makan();
 		}
-		sleep(waktuGerak);
+		if(exp>0)
+			sleep(waktuGerak);
 	}
+	cout<<"Udah";
 }

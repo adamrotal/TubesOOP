@@ -25,6 +25,10 @@ int Makhluk::getOrdinat(){
 	return posisiX;
 }
 
+int Makhluk::getExp(){
+	return exp;
+}
+
 int Makhluk::getKlasifikasi(){
 	if((bentuk>='0')&&(bentuk<='9')){
 		return 2;
@@ -39,6 +43,7 @@ int Makhluk::getJumlahMakhluk(){
 
 void Makhluk::killMakhluk() {
 	exp = 0;
+	
 }
 void Makhluk::hapusShield() {
 

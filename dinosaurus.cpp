@@ -11,10 +11,7 @@ typedef pair<int,int> ii;
 
 
 
-void Dinosaurus::makan() {
-	//Memakan Mahkluk lain
-	
-}
+
 
 int Dinosaurus::BFS(int makanan){
 	bool visit[37][151];
@@ -35,16 +32,7 @@ int Dinosaurus::BFS(int makanan){
 
 	while(!q.empty()&&(!keluar)){
 		u=q.front();q.pop();
-		KlasifikasiMh=B->cekMakhluk(u.first,u.second);
-        if (KlasifikasiMh==0)
-        {
-            q.push(ii(u.first,u.second));
-            visit[u.second][u.first] = true;
-        }else if((makanan==3)||(KlasifikasiMh==makanan)){
-        	final_absis=u.first;
-        	final_ordinat=u.second;
-        	keluar=true;                	
-        }
+		
 
 		for (int k = 0; k < 4; ++k)
         {
@@ -90,7 +78,7 @@ int Dinosaurus::BFS(int makanan){
 	}else if((_ordinat<final_ordinat)&&(_absis<final_absis)){
 		return 7;
 	}else{
-		cout<<"Salah"<<makanan<<endl;
+		//cout<<"Salah"<<makanan<<endl;
 		srand (time(NULL));
 		return(rand() % 8);
 	}
