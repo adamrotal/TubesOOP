@@ -93,6 +93,7 @@ void Board::HapusMakhlukForce(Makhluk* Mh){
 void Board::ScreenShoot() {
 	ofstream outfile;
 	outfile.open("ScreenShoot.txt");
+    outfile<<"============================= SCREENSHOT OF RUMBLE ARENA ============================="<<endl;
 	for(int i=0;i<37;i++){
         for(int j=0;j<151;j++)
             if(kotak[i][j]==NULL){

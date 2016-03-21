@@ -171,6 +171,7 @@ mutex Key;
 void StepByStep() {
 	cout<<endl<<"Next Step"<<endl;
 	Key.unlock();
+
 	sleep(1);
 	Key.lock();
 }
@@ -184,11 +185,15 @@ void Pause() {
 		//do nothing
 	}
 	do {
+		while (!keyStroke()) {
+			//do nothing
+		}
 		KeyPressed = getchar();
 		if (KeyPressed=='N') {
 			StepByStep();
 		}
-	} while (!keyStroke()&&(getchar()!='C'));
+	} while (KeyPressed!='C');
+	cout<<"PROGRAM COUNTINUED"<<endl;
 	Key.unlock();
 }
 
@@ -259,15 +264,37 @@ int main()
         	KeyPressed = getchar();
 		       	switch (KeyPressed) {
         		case 'P' : {
-        			Pause();
+        			cout<<endl<<"PAUSE"<<endl;
+					Key.lock();
+					B->TampilkanBoard();
+							
+					while (!keyStroke()) {
+						//do nothing
+					}
+					do {
+						while (!keyStroke()) {
+							//do nothing
+						}
+						KeyPressed = getchar();
+						if (KeyPressed=='N') {
+							cout<<endl<<"Next Step"<<endl;
+							if(Makhluk::getJumlahMakhluk()==1) {
+								break;
+							}
+							Key.unlock();
+							sleep(1);
+							B->TampilkanBoard();
+							Key.lock();
+						}
+					} while (KeyPressed!='C');
+					cout<<"PROGRAM COUNTINUED"<<endl;
+					Key.unlock();
+
         			break;
         		}
         		case 'S' : {
-        			cout<<endl<<"Screen Shot"<<endl;
-        			break;
-        		}
-        		case 'B' : {
-        			cout<<endl<<"Step By Step"<<endl;
+        			cout<<endl<<"SCREENSHOT"<<endl;
+        			B->ScreenShoot();
         			break;
         		}
 
