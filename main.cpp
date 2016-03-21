@@ -35,6 +35,28 @@ using namespace std;
     while(goal>clock());
 }*/
 
+
+int keyStroke() {
+    static bool flag = false;
+    static const int STDIN = 0;
+
+    if (!flag) {
+        //Memakai termios untuk mematikan line buffering
+        struct termios T;
+
+        tcgetattr(STDIN, &T);
+        T.c_lflag &= ~ICANON;
+        tcsetattr(STDIN, TCSANOW, &T);
+        setbuf(stdin, NULL);
+        flag = true;
+    }
+
+    int NByte;
+    ioctl(STDIN, FIONREAD, &NByte);  // STDIN = 0
+    
+    return NByte;
+}
+
 int getRandomAbsis() {
 	srand (time(NULL));
 	int y = rand() % 151;         // x in the range 1 to 40
@@ -189,6 +211,7 @@ int main()
 
 	while(Makhluk::getJumlahMakhluk()>1){
         B->TampilkanBoard();
+
         cout<<Makhluk::getJumlahMakhluk();
 	//	M = createObject();
         sleep(1);
