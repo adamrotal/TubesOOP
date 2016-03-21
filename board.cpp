@@ -2,6 +2,7 @@
 #include <iostream>
 #include <mutex>
 #include <unistd.h>
+#include <fstream>
 
 using namespace std;
 
@@ -87,4 +88,20 @@ void Board::HapusMakhlukForce(Makhluk* Mh){
             if(kotak[i][j]==Mh)
                 kotak[i][j]=NULL;
     m.unlock();
+}
+
+void Board::ScreenShoot() {
+	ofstream outfile;
+	outfile.open("ScreenShoot.txt");
+	for(int i=0;i<37;i++){
+        for(int j=0;j<151;j++)
+            if(kotak[i][j]==NULL){
+                outfile<<" ";
+            }else{
+                outfile<<kotak[i][j]->getBentuk();
+            }
+        outfile<<endl;
+    }
+    outfile.close();
+	
 }

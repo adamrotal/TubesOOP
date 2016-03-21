@@ -18,6 +18,7 @@ public:
     //Herbs* getHerbs(int _absis,int _ordinat);
     Makhluk* getMakhluk(int _absis,int _ordinat);
    	void HapusMakhlukForce(Makhluk* Mh);
+   	void ScreenShoot();
 
 private:
     Board();

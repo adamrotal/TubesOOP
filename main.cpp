@@ -132,7 +132,6 @@ void createThread() {
 
 void cekMakhlukHidup(Makhluk* M[],int banyakMakhluk){
 
-	mutex m;
 	Board* B;
 	B=Board::Instance();
 	bool *hidup = new bool[banyakMakhluk];
@@ -167,6 +166,35 @@ void cekMakhlukHidup(Makhluk* M[],int banyakMakhluk){
 	
 }
 
+mutex Key;
+
+void StepByStep() {
+	cout<<endl<<"Next Step"<<endl;
+	Key.unlock();
+	sleep(1);
+	Key.lock();
+}
+
+void Pause() {
+	char KeyPressed;
+	cout<<endl<<"PAUSE"<<endl;
+	//fflush(stdout);
+	Key.lock();
+	while (!keyStroke()) {
+		//do nothing
+	}
+	do {
+		KeyPressed = getchar();
+		if (KeyPressed=='N') {
+			StepByStep();
+		}
+	} while (!keyStroke()&&(getchar()!='C'));
+	Key.unlock();
+}
+
+
+
+
 int main()
 {
 	
@@ -181,7 +209,9 @@ int main()
 	//Makhluk* M6 = new Kentrosaurus(16,75);
 	//Makhluk* M7 = new Pteranodon(17,94);
 	//Makhluk* M8 = new Gigantosaurus(14,80);
-	
+
+	mutex Key;
+		
 	M[0]=new Stegosaurus(13,100);
 	M[1]=new RaflesiaArudi(10,100);
 	M[2]=new Stegosaurus(17,100);
@@ -229,8 +259,7 @@ int main()
         	KeyPressed = getchar();
 		       	switch (KeyPressed) {
         		case 'P' : {
-        			cout<<endl<<"PAUSE"<<endl;
-        			//fflush(stdout);
+        			Pause();
         			break;
         		}
         		case 'S' : {
