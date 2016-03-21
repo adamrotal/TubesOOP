@@ -4,6 +4,13 @@
 #include <ctime>
 #include <thread>
 #include <list>
+#include <sys/ioctl.h> 
+#include <termios.h>
+#include <stdbool.h>
+#include <unistd.h>
+#include <time.h>
+#include <mutex>
+
 #include "board.h"
 #include "makhluk.h"
 #include "dinosaurus.h"
@@ -23,8 +30,6 @@
 #include "KantungAdam.h"
 #include "FazaMalu.h"
 #include "RaflesiaArudi.h"
-#include <unistd.h>
-#include <time.h>
 
 
 using namespace std;
@@ -126,6 +131,8 @@ void createThread() {
 }*/
 
 void cekMakhlukHidup(Makhluk* M[],int banyakMakhluk){
+
+	mutex m;
 	Board* B;
 	B=Board::Instance();
 	bool *hidup = new bool[banyakMakhluk];
@@ -207,13 +214,43 @@ int main()
     
     //std::thread t2(M1->hidup());
     cout<<endl;
-
+    char KeyPressed;
+  
 
 	while(Makhluk::getJumlahMakhluk()>1){
         B->TampilkanBoard();
-
+        //cout<<endl;
+        //cout<<endl;
+        //cout<<endl;
         cout<<Makhluk::getJumlahMakhluk();
 	//	M = createObject();
+        if (keyStroke()) {
+        	
+        	KeyPressed = getchar();
+		       	switch (KeyPressed) {
+        		case 'P' : {
+        			cout<<endl<<"PAUSE"<<endl;
+        			//fflush(stdout);
+        			break;
+        		}
+        		case 'S' : {
+        			cout<<endl<<"Screen Shot"<<endl;
+        			break;
+        		}
+        		case 'B' : {
+        			cout<<endl<<"Step By Step"<<endl;
+        			break;
+        		}
+
+        		default : {
+        			cout<<endl;
+        			cout<<endl;
+        			cout<<endl;
+        			
+        			break;
+        		}
+        	}
+        }
         sleep(1);
     }
 
